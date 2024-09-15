@@ -1,0 +1,30 @@
+{
+  "welcome": {
+    "title": "Willkommen! 🌟",
+    "description": "Teste deine Deutschkenntnisse und habe Spaß!",
+    "startGame": "Spiel Starten"
+  },
+  "game": {
+    "question": "Wähle das richtige Wort:",
+    "correct": "Richtig! 🎉",
+    "wrong": "Falsch! 😢",
+    "selectOptionFirst": "Bitte wähle zuerst eine Option aus.",
+    "timeLeft": "Verbleibende Zeit",
+    "submitAnswer": "Antwort einreichen",
+    "youWon": "Du hast gewonnen! 🎉",
+    "gameOver": "Spiel vorbei!",
+    "score": "Punktzahl",
+    "level": "Stufe",
+    "badge": "Abzeichen",
+    "points": "Punkte",
+    "playAgain": "Nochmal spielen",
+    "levelBeginner": "Anfänger",
+    "levelIntermediate": "Fortgeschritten",
+    "levelAdvanced": "Experte",
+    "levelExpert": "Meister",
+    "badgeMaster": "🏆 Meister",
+    "badgePro": "🥈 Profi",
+    "badgeNovice": "🥉 Anfänger",
+    "badgeNoob": "🤓 Neuling"
+  }
+}

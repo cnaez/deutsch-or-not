@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { trpc } from "../../utils/trpc";
 import Confetti from "react-confetti";
 
 const Game = () => {
+  const { t } = useTranslation();
   const [score, setScore] = useState(0);
   const [points, setPoints] = useState(0);
   const [result, setResult] = useState("");
@@ -14,8 +16,7 @@ const Game = () => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [gameWon, setGameWon] = useState(false);
 
-  const t = trpc.main;
-  const { data: choices, refetch } = t.getChoices.useQuery(undefined, {
+  const { data: choices, refetch } = trpc.main.getChoices.useQuery(undefined, {
     refetchOnWindowFocus: false,
   });
 
@@ -28,10 +29,10 @@ const Game = () => {
     }
   }, [timeLeft, questionCount]);
 
-  const checkAnswer = t.checkAnswer.useMutation({
+  const checkAnswer = trpc.main.checkAnswer.useMutation({
     onSuccess: (isReal) => {
       setIsCorrect(isReal);
-      setResult(isReal ? "Correct! 🎉" : "Wrong! 😢");
+      setResult(isReal ? t("game.correct") : t("game.wrong"));
       if (isReal) {
         setScore(score + 1);
         setPoints(points + 10);
@@ -73,22 +74,22 @@ const Game = () => {
     if (selectedChoice) {
       checkAnswer.mutate({ word: selectedChoice });
     } else {
-      setResult("Please select an option first.");
+      setResult(t("game.selectOptionFirst"));
     }
   };
 
   const getLevel = (score: number) => {
-    if (score < 5) return "Beginner";
-    if (score < 10) return "Intermediate";
-    if (score < 20) return "Advanced";
-    return "Expert";
+    if (score < 5) return t("game.levelBeginner");
+    if (score < 10) return t("game.levelIntermediate");
+    if (score < 20) return t("game.levelAdvanced");
+    return t("game.levelExpert");
   };
 
   const getBadge = (score: number) => {
-    if (score >= 20) return "🏆 Master";
-    if (score >= 10) return "🥈 Pro";
-    if (score >= 5) return "🥉 Novice";
-    return "Noob";
+    if (score >= 20) return t("game.badgeMaster");
+    if (score >= 10) return t("game.badgePro");
+    if (score >= 5) return t("game.badgeNovice");
+    return t("game.badgeNoob");
   };
 
   const handleResetGame = () => {
@@ -104,14 +105,12 @@ const Game = () => {
   };
 
   return (
-    <div className="min-h-dvh flex flex-col items-center justify-center bg-gray-100">
+    <div>
       {showConfetti && <Confetti />}
       {choices && !showResults ? (
         <div className="relative max-w-3xl w-11/12 bg-white bg-opacity-40 rounded-xl shadow-xl backdrop-blur-lg backdrop-brightness-90 px-10 py-16">
           <h1 className="sm:text-3xl text-2xl text-center font-bold mb-16 text-gray-900">
-            {isCorrect === null
-              ? "Which of these is a real German word?"
-              : result}
+            {isCorrect === null ? t("game.question") : result}
           </h1>
           <div className="grid sm:grid-cols-2 gap-4 mb-6">
             {choices.map((choice) => (
@@ -139,11 +138,11 @@ const Game = () => {
             onClick={handleSubmitAnswer}
             disabled={isCorrect !== null}
           >
-            Submit Answer
+            {t("game.submitAnswer")}
           </button>
 
           <p className="text-lg font-medium mt-8 text-center text-gray-800">
-            Time Left: {timeLeft} seconds
+            {t("game.timeLeft")}: {timeLeft} seconds
           </p>
         </div>
       ) : (
@@ -154,25 +153,25 @@ const Game = () => {
                 gameWon ? "text-green-500" : "text-red-500"
               }`}
             >
-              {gameWon ? "You Won! 🎉" : "Game Over!"}
+              {gameWon ? t("game.youWon") : t("game.gameOver")}
             </h1>
             <p className="text-2xl font-bold text-center text-gray-800">
-              Score: {score}
+              {t("game.score")}: {score}
             </p>
             <p className="text-xl font-medium text-center text-gray-800 mt-2">
-              Level: {getLevel(score)}
+              {t("game.level")}: {getLevel(score)}
             </p>
             <p className="text-xl font-medium text-center text-gray-800 mt-2">
-              Badge: {getBadge(score)}
+              {t("game.badge")}: {getBadge(score)}
             </p>
             <p className="text-xl font-medium text-center text-gray-800 mt-2">
-              Points: {points}
+              {t("game.points")}: {points}
             </p>
             <button
               className="w-full mt-6 bg-blue-700 text-white py-4 px-6 rounded-lg shadow-md hover:bg-blue-800 transition-colors"
               onClick={handleResetGame}
             >
-              Play Again
+              {t("game.playAgain")}
             </button>
           </div>
         )

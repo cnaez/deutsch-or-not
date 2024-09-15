@@ -10,6 +10,11 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: "#fff";
+  margin: 0;
+}
+
+html, body, #__next {
+  height: 100%;
 }
 
 .glassy-box {

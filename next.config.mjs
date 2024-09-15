@@ -13,6 +13,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   reactStrictMode: true,
+
+  i18n: {
+    locales: ["en", "de"], // Supported languages
+    defaultLocale: "en", // Default language
+  },
 };
 
 export default nextConfig;

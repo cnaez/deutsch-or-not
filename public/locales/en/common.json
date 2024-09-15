@@ -1,0 +1,30 @@
+{
+  "welcome": {
+    "title": "Welcome! 🌟",
+    "description": "Test your German vocabulary skills and have a blast!",
+    "startGame": "Start Game"
+  },
+  "game": {
+    "question": "Choose the correct word:",
+    "correct": "Correct! 🎉",
+    "wrong": "Wrong! 😢",
+    "selectOptionFirst": "Please select an option first.",
+    "timeLeft": "Time Left",
+    "submitAnswer": "Submit Answer",
+    "youWon": "You Won! 🎉",
+    "gameOver": "Game Over!",
+    "score": "Score",
+    "level": "Level",
+    "badge": "Badge",
+    "points": "Points",
+    "playAgain": "Play Again",
+    "levelBeginner": "Beginner",
+    "levelIntermediate": "Intermediate",
+    "levelAdvanced": "Advanced",
+    "levelExpert": "Expert",
+    "badgeMaster": "🏆 Master",
+    "badgePro": "🥈 Pro",
+    "badgeNovice": "🥉 Novice",
+    "badgeNoob": "🤓 Noob"
+  }
+}
