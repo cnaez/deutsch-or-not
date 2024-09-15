@@ -10,7 +10,7 @@ const BackButton = () => {
     <div className="absolute top-4 right-4">
       <button
         onClick={handleBack}
-        className="flex items-center space-x-2 bg-gradient-to-r from-green-400 to-blue-500 text-white py-3 px-6 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600"
+        className="flex items-center space-x-2 bg-gradient-to-r from-green-400 to-blue-500 text-white py-3 px-6 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-700 z-40"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

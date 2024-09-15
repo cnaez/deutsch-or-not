@@ -61,12 +61,12 @@ const WelcomePage = () => {
 
         <button
           onClick={handleStart}
-          className={`bg-gradient-to-r from-green-400 to-blue-500 text-white py-4 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105 flex justify-center mx-auto w-4/5 ${
-            loading || !name ? "opacity-80 cursor-not-allowed" : "glow-text"
-          }`}
-          disabled={loading || !name}
+          className={`bg-gradient-to-r from-green-400 to-blue-500 text-white py-4 px-6 rounded-lg shadow-lg transform transition duration-500 hover:scale-105 flex justify-center mx-auto w-4/5 ${
+            loading ? "opacity-80 cursor-not-allowed" : "glow-text"
+          } ${name ? "opacity-100" : "opacity-0"}`}
+          disabled={loading}
         >
-          {loading ? <Spinner /> : t("welcome.startGame")}
+          {loading ? <Spinner /> : t("welcome.letsgo")}
         </button>
 
         <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">

@@ -144,10 +144,10 @@ const Game = () => {
                     {questionCount + 1}/7
                   </h2>
                 </div>
+                <h1 className="sm:text-3xl text-2xl text-center font-bold mb-16 text-gray-900">
+                  {isCorrect === null ? t("game.question") : result}
+                </h1>
                 <Box>
-                  <h1 className="sm:text-3xl text-2xl text-center font-bold mb-16 text-gray-900">
-                    {isCorrect === null ? t("game.question") : result}
-                  </h1>
                   <div className="grid md:grid-cols-2 gap-4 mb-6">
                     {choices.map((choice) => (
                       <button
@@ -190,7 +190,7 @@ const Game = () => {
                 <Box>
                   <div className="mb-8">
                     <h1
-                      className={`sm:text-4xl text-3xl text-center font-bold animate__animated mb-12 ${
+                      className={`sm:text-4xl text-3xl text-center font-bold glow-text animate__animated mb-12 ${
                         gameWon
                           ? "text-green-500 animate__tada"
                           : "text-red-500 animate__bounce"
@@ -201,7 +201,7 @@ const Game = () => {
                     <p className="text-2xl font-bold text-center text-gray-800">
                       {t("game.score")}: {score}
                     </p>
-                    <p className="text-xl font-medium text-center text-gray-800 mt-2">
+                    <p className="text-xl font-medium text-center text-gray-800 mt-4">
                       {t("game.level")}: {getLevel(score)}
                     </p>
                     <p className="text-xl font-medium text-center text-gray-800 mt-2">
@@ -212,15 +212,20 @@ const Game = () => {
                     </p>
                   </div>
                   <Leaderboard />
-                  <Button className="w-full mt-6" onClick={handleResetGame}>
-                    {t("game.playAgain")}
-                  </Button>
-                  <Button
-                    className="w-full mt-6"
-                    onClick={() => router.replace("/")}
-                  >
-                    {t("game.goHome")}
-                  </Button>
+                  <div className="grid md:grid-cols-2 gap-4 mb-2 mt-6">
+                    <Button
+                      className="w-full"
+                      onClick={() => router.replace("/")}
+                    >
+                      {t("game.goHome")}
+                    </Button>
+                    <Button
+                      className="w-full bg-transparent"
+                      onClick={handleResetGame}
+                    >
+                      {t("game.playAgain")}
+                    </Button>
+                  </div>
                 </Box>
               )
             )}
