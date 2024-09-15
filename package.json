@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "ts-node prisma/seed.ts",
-    "postinstall": "prisma migrate deploy && ts-node prisma/seed.ts"
+    "postbuild": "prisma migrate deploy && ts-node prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.19.1",
