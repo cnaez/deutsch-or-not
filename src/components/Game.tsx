@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 const Game = () => {
   const { t } = useTranslation();
   const [score, setScore] = useState(0);
-  const [points, setPoints] = useState(0);
+  
   const [result, setResult] = useState("");
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -51,7 +51,6 @@ const Game = () => {
       setResult(isReal ? t("game.correct") : t("game.wrong"));
       if (isReal) {
         setScore(score + 1);
-        setPoints(points + 10);
       }
 
       // Determine the correct answer from choices
@@ -76,9 +75,10 @@ const Game = () => {
     setTimeLeft(10);
 
     if (questionCount + 1 === 7) {
-      setShowResults(true);
       checkWinCondition();
+      setShowResults(true);
     }
+    updateScore.mutate({ userId: Number(userId), score });
   };
 
   const checkWinCondition = () => {
@@ -87,7 +87,6 @@ const Game = () => {
     if (winCondition) {
       setShowConfetti(true);
     }
-    updateScore.mutate({ userId: Number(userId), score });
   };
 
   const handleGuess = (chosenWord: string) => {
@@ -118,7 +117,7 @@ const Game = () => {
 
   const handleResetGame = () => {
     setScore(0);
-    setPoints(0);
+
     setQuestionCount(0);
     setShowResults(false);
     setShowConfetti(false);
@@ -206,9 +205,6 @@ const Game = () => {
                     </p>
                     <p className="text-xl font-medium text-center text-gray-800 mt-2">
                       {t("game.badge")}: {getBadge(score)}
-                    </p>
-                    <p className="text-xl font-medium text-center text-gray-800 mt-2">
-                      {t("game.points")}: {points}
                     </p>
                   </div>
                   <Leaderboard />

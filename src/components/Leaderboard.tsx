@@ -6,7 +6,7 @@ const Leaderboard = () => {
   const { t } = useTranslation();
   const { data: leaderboard, isLoading } = trpc.main.getLeaderboard.useQuery();
 
-  const rankHandler = (i) => {
+  const rankHandler = (i: number) => {
     switch (i) {
       case 1:
         return "🏆";
