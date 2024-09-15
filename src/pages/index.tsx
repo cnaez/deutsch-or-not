@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import Spinner from "@/components/Spinner";
+import Box from "@/components/Box";
 
 const WelcomePage = () => {
   const { t } = useTranslation();
@@ -19,7 +20,7 @@ const WelcomePage = () => {
   return (
     <div>
       <LanguageSwitcher />
-      <div className="relative bg-white bg-opacity-10 py-10 px-14 rounded-xl shadow-2xl backdrop-blur-md max-w-lg mx-auto text-center mt-6">
+      <Box>
         <h1 className="text-5xl font-extrabold mb-6 animate__animated animate__fadeIn animate__delay-1s">
           {t("welcome.title")}
         </h1>
@@ -57,7 +58,7 @@ const WelcomePage = () => {
             ></path>
           </svg>
         </div>
-      </div>
+      </Box>
     </div>
   );
 };

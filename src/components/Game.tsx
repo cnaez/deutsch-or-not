@@ -4,6 +4,8 @@ import { trpc } from "../../utils/trpc";
 import Confetti from "react-confetti";
 import BackButton from "./BackButton";
 import LoadingAnimation from "./LoadingAnimation";
+import Box from "./Box";
+import Button from "./Button";
 
 const Game = () => {
   const { t } = useTranslation();
@@ -65,7 +67,7 @@ const Game = () => {
   };
 
   const checkWinCondition = () => {
-    const winCondition = score >= 4;
+    const winCondition = score >= 3;
     setGameWon(winCondition);
     if (winCondition) {
       setShowConfetti(true);
@@ -120,47 +122,57 @@ const Game = () => {
           <div>
             {showConfetti && <Confetti />}
             {choices && !showResults ? (
-              <div className="relative max-w-5xl w-11/12 bg-white bg-opacity-40 rounded-xl shadow-xl backdrop-blur-lg backdrop-brightness-90 px-10 py-16">
-                <h1 className="sm:text-3xl text-2xl text-center font-bold mb-16 text-gray-900">
-                  {isCorrect === null ? t("game.question") : result}
-                </h1>
-                <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                  {choices.map((choice) => (
-                    <button
-                      key={choice.word}
-                      className={`md:text-xl py-5 px-8 rounded-lg text-white font-semibold transition-transform transform hover:scale-105 ${
-                        selectedChoice === choice.word
-                          ? isCorrect === null
-                            ? "bg-blue-700"
-                            : isCorrect
-                            ? "bg-green-500"
-                            : "bg-red-500"
-                          : "bg-blue-500"
-                      }`}
-                      onClick={() => handleGuess(choice.word)}
-                      disabled={isCorrect !== null}
-                    >
-                      {choice.word}
-                    </button>
-                  ))}
+              <>
+                <div className="text-center mb-6">
+                  <h2 className="text-lg font-bold text-gray-800">
+                    {questionCount + 1}/7
+                  </h2>
                 </div>
-                <button
-                  className="w-full bg-blue-700 text-white py-4 px-6 rounded-lg shadow-md hover:bg-blue-800 transition-colors"
-                  onClick={handleSubmitAnswer}
-                  disabled={isCorrect !== null}
-                >
-                  {t("game.submitAnswer")}
-                </button>
-                <p className="text-lg font-medium mt-8 text-center text-gray-800">
-                  {t("game.timeLeft")}: {timeLeft} seconds
-                </p>
-              </div>
+                <Box>
+                  <h1 className="sm:text-3xl text-2xl text-center font-bold mb-16 text-gray-900">
+                    {isCorrect === null ? t("game.question") : result}
+                  </h1>
+                  <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                    {choices.map((choice) => (
+                      <button
+                        key={choice.word}
+                        className={`md:text-xl py-5 px-8 rounded-lg text-white font-semibold transition-transform transform hover:scale-105 ${
+                          selectedChoice === choice.word
+                            ? isCorrect === null
+                              ? "bg-blue-700"
+                              : isCorrect
+                              ? "bg-green-500"
+                              : "bg-red-500"
+                            : "bg-blue-500"
+                        }`}
+                        onClick={() => handleGuess(choice.word)}
+                        disabled={isCorrect !== null}
+                      >
+                        {choice.word}
+                      </button>
+                    ))}
+                  </div>
+                  <Button
+                    onClick={handleSubmitAnswer}
+                    disabled={isCorrect !== null}
+                  >
+                    {t("game.submitAnswer")}
+                    <span className="ripple"></span>
+                  </Button>
+
+                  <p className="text-lg font-medium mt-8 text-center text-gray-800">
+                    {t("game.timeLeft")}: {timeLeft} seconds
+                  </p>
+                </Box>
+              </>
             ) : (
               showResults && (
-                <div className="relative max-w-3xl w-11/12 bg-white bg-opacity-40 rounded-xl shadow-xl backdrop-blur-lg backdrop-brightness-90 px-10 py-16">
+                <Box>
                   <h1
-                    className={`sm:text-4xl text-3xl text-center font-bold mb-12 ${
-                      gameWon ? "text-green-500" : "text-red-500"
+                    className={`sm:text-4xl text-3xl text-center font-bold animate__animated mb-12 ${
+                      gameWon
+                        ? "text-green-500 animate__tada"
+                        : "text-red-500 animate__bounce"
                     }`}
                   >
                     {gameWon ? t("game.youWon") : t("game.gameOver")}
@@ -177,13 +189,10 @@ const Game = () => {
                   <p className="text-xl font-medium text-center text-gray-800 mt-2">
                     {t("game.points")}: {points}
                   </p>
-                  <button
-                    className="w-full mt-6 bg-blue-700 text-white py-4 px-6 rounded-lg shadow-md hover:bg-blue-800 transition-colors"
-                    onClick={handleResetGame}
-                  >
+                  <Button className="w-full mt-6" onClick={handleResetGame}>
                     {t("game.playAgain")}
-                  </button>
-                </div>
+                  </Button>
+                </Box>
               )
             )}
           </div>
