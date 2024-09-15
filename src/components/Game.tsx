@@ -78,7 +78,6 @@ const Game = () => {
       checkWinCondition();
       setShowResults(true);
     }
-    updateScore.mutate({ userId: Number(userId), score });
   };
 
   const checkWinCondition = () => {
@@ -87,6 +86,7 @@ const Game = () => {
     if (winCondition) {
       setShowConfetti(true);
     }
+    updateScore.mutate({ userId: Number(userId), score });
   };
 
   const handleGuess = (chosenWord: string) => {
