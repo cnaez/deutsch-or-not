@@ -3,7 +3,8 @@
     "title": "¡Bienvenido! 🌟",
     "description": "¡Pon a prueba tu vocabulario alemán y diviértete!",
     "startGame": "Comenzar Juego",
-    "letsgo": "Vamos"
+    "letsgo": "Vamos",
+    "enterYourName": "Tu Nombre"
   },
   "game": {
     "question": "Elige la palabra correcta:",
@@ -27,5 +28,14 @@
     "badgePro": "🥈 Profesional",
     "badgeNovice": "🥉 Novato",
     "badgeNoob": "🤓 Principiante"
+  },
+  "leaderboard": {
+    "title": "Tabla de Clasificación",
+    "rank": "Rango",
+    "player": "Jugador",
+    "score": "Puntuación",
+    "level": "Nivel",
+    "badge": "Insignia",
+    "points": "Puntos"
   }
 }

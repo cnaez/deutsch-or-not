@@ -6,6 +6,8 @@ import BackButton from "./BackButton";
 import LoadingAnimation from "./LoadingAnimation";
 import Box from "./Box";
 import Button from "./Button";
+import Leaderboard from "./Leaderboard";
+import { useRouter } from "next/router";
 
 const Game = () => {
   const { t } = useTranslation();
@@ -21,6 +23,9 @@ const Game = () => {
   const [gameWon, setGameWon] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState<string | null>(null);
 
+  const router = useRouter();
+  const { userId } = router.query;
+
   const {
     data: choices,
     isLoading,
@@ -28,6 +33,8 @@ const Game = () => {
   } = trpc.main.getChoices.useQuery(undefined, {
     refetchOnWindowFocus: false,
   });
+
+  const updateScore = trpc.main.updateUserScore.useMutation();
 
   useEffect(() => {
     if (timeLeft > 0 && questionCount < 7) {
@@ -80,6 +87,7 @@ const Game = () => {
     if (winCondition) {
       setShowConfetti(true);
     }
+    updateScore.mutate({ userId: Number(userId), score });
   };
 
   const handleGuess = (chosenWord: string) => {
@@ -140,7 +148,7 @@ const Game = () => {
                   <h1 className="sm:text-3xl text-2xl text-center font-bold mb-16 text-gray-900">
                     {isCorrect === null ? t("game.question") : result}
                   </h1>
-                  <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                  <div className="grid md:grid-cols-2 gap-4 mb-6">
                     {choices.map((choice) => (
                       <button
                         key={choice.word}
@@ -180,29 +188,38 @@ const Game = () => {
             ) : (
               showResults && (
                 <Box>
-                  <h1
-                    className={`sm:text-4xl text-3xl text-center font-bold animate__animated mb-12 ${
-                      gameWon
-                        ? "text-green-500 animate__tada"
-                        : "text-red-500 animate__bounce"
-                    }`}
-                  >
-                    {gameWon ? t("game.youWon") : t("game.gameOver")}
-                  </h1>
-                  <p className="text-2xl font-bold text-center text-gray-800">
-                    {t("game.score")}: {score}
-                  </p>
-                  <p className="text-xl font-medium text-center text-gray-800 mt-2">
-                    {t("game.level")}: {getLevel(score)}
-                  </p>
-                  <p className="text-xl font-medium text-center text-gray-800 mt-2">
-                    {t("game.badge")}: {getBadge(score)}
-                  </p>
-                  <p className="text-xl font-medium text-center text-gray-800 mt-2">
-                    {t("game.points")}: {points}
-                  </p>
+                  <div className="mb-8">
+                    <h1
+                      className={`sm:text-4xl text-3xl text-center font-bold animate__animated mb-12 ${
+                        gameWon
+                          ? "text-green-500 animate__tada"
+                          : "text-red-500 animate__bounce"
+                      }`}
+                    >
+                      {gameWon ? t("game.youWon") : t("game.gameOver")}
+                    </h1>
+                    <p className="text-2xl font-bold text-center text-gray-800">
+                      {t("game.score")}: {score}
+                    </p>
+                    <p className="text-xl font-medium text-center text-gray-800 mt-2">
+                      {t("game.level")}: {getLevel(score)}
+                    </p>
+                    <p className="text-xl font-medium text-center text-gray-800 mt-2">
+                      {t("game.badge")}: {getBadge(score)}
+                    </p>
+                    <p className="text-xl font-medium text-center text-gray-800 mt-2">
+                      {t("game.points")}: {points}
+                    </p>
+                  </div>
+                  <Leaderboard />
                   <Button className="w-full mt-6" onClick={handleResetGame}>
                     {t("game.playAgain")}
+                  </Button>
+                  <Button
+                    className="w-full mt-6"
+                    onClick={() => router.replace("/")}
+                  >
+                    {t("game.goHome")}
                   </Button>
                 </Box>
               )

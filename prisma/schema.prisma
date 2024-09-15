@@ -29,3 +29,10 @@ model GameSession {
   score     Int
   createdAt DateTime @default(now())
 }
+
+model User {
+  id      Int      @id @default(autoincrement())
+  name    String
+  score   Int      @default(0)
+  createdAt DateTime @default(now())
+}

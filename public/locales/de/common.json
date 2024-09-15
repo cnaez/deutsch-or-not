@@ -3,7 +3,8 @@
     "title": "Willkommen! 🌟",
     "description": "Teste deine Deutschkenntnisse und habe Spaß!",
     "startGame": "Spiel Starten",
-    "letsgo": "Los geht's"
+    "letsgo": "Los geht's",
+    "enterYourName": "Dein Name"
   },
   "game": {
     "question": "Wähle das richtige Wort:",
@@ -27,5 +28,14 @@
     "badgePro": "🥈 Profi",
     "badgeNovice": "🥉 Anfänger",
     "badgeNoob": "🤓 Neuling"
+  },
+  "leaderboard": {
+    "title": "Bestenliste",
+    "rank": "Rang",
+    "player": "Spieler",
+    "score": "Punktzahl",
+    "level": "Niveau",
+    "badge": "Abzeichen",
+    "points": "Punkte"
   }
 }

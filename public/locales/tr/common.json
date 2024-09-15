@@ -3,7 +3,8 @@
     "title": "Hoşgeldiniz! 🌟",
     "description": "Almanca kelime bilginizi test edin ve eğlenin!",
     "startGame": "Oyuna Başla",
-    "letsgo": "Hadi gidelim"
+    "letsgo": "Hadi gidelim",
+    "enterYourName": "Adınız"
   },
   "game": {
     "question": "Doğru kelimeyi seçin:",
@@ -27,5 +28,14 @@
     "badgePro": "🥈 Profesyonel",
     "badgeNovice": "🥉 Çaylak",
     "badgeNoob": "🤓 Acemi"
+  },
+  "leaderboard": {
+    "title": "Lider Tablosu",
+    "rank": "Sıra",
+    "player": "Oyuncu",
+    "score": "Skor",
+    "level": "Seviye",
+    "badge": "Rozet",
+    "points": "Puanlar"
   }
 }

@@ -7,7 +7,7 @@ import { trpc } from "../../utils/trpc";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-600 text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen glow-effect text-white">
       <Component {...pageProps} />
     </div>
   );

@@ -43,6 +43,41 @@ export const gameRouter = router({
       });
       return submission;
     }),
+  createUser: procedure
+    .input(
+      z.object({
+        name: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      return await prisma.user.create({
+        data: {
+          name: input.name,
+        },
+      });
+    }),
+  getLeaderboard: procedure.query(async ({ ctx }) => {
+    return await prisma.user.findMany({
+      orderBy: {
+        score: "desc",
+      },
+      take: 10, // Top 10 users
+    });
+  }),
+  updateUserScore: procedure
+    .input(
+      z.object({
+        userId: z.number(),
+        score: z.number(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { userId, score } = input;
+      await prisma.user.update({
+        where: { id: userId },
+        data: { score },
+      });
+    }),
 });
 
 // Export type definition of the API

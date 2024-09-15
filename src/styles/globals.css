@@ -33,7 +33,7 @@ button:active {
 }
 
 button:disabled {
-  opacity: 40%;
+  opacity: 60%;
 }
 
 .ripple {
@@ -182,4 +182,26 @@ button:active .ripple {
 
 .animate-fadeIn {
   animation: fadeIn 2s forwards;
+}
+
+@keyframes glow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.glow-effect {
+  background: linear-gradient(270deg, rgba(0, 180, 255, 0.7), rgba(255, 0, 150, 0.7), rgba(255, 255, 255, 0.3));
+  background-size: 200% 200%;
+  animation: glow 15s ease infinite;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
 }

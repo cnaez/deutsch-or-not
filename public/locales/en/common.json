@@ -3,7 +3,8 @@
     "title": "Welcome! 🌟",
     "description": "Test your German vocabulary skills and have a blast!",
     "startGame": "Start Game",
-    "letsgo": "Let's go"
+    "letsgo": "Let's go",
+    "enterYourName": "Your Name"
   },
   "game": {
     "question": "Choose the correct word:",
@@ -27,5 +28,14 @@
     "badgePro": "🥈 Pro",
     "badgeNovice": "🥉 Novice",
     "badgeNoob": "🤓 Noob"
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "rank": "Rank",
+    "player": "Player",
+    "score": "Score",
+    "level": "Level",
+    "badge": "Badge",
+    "points": "Points"
   }
 }
