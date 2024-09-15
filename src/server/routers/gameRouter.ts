@@ -6,7 +6,7 @@ import { PrismaClient } from "@prisma/client";
 // Initialize Prisma Client
 const prisma = new PrismaClient();
 
-export const aRouter = router({
+export const gameRouter = router({
   getChoices: procedure.query(async ({ ctx }) => {
     // Fetch all words
     const allWords = await prisma.word.findMany();
@@ -46,4 +46,4 @@ export const aRouter = router({
 });
 
 // Export type definition of the API
-export type EmployeeRouter = typeof aRouter;
+export type GameRouter = typeof gameRouter;

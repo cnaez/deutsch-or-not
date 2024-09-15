@@ -1,9 +1,9 @@
 import { router } from "../trpc";
-import { aRouter } from "./employeeRouter";
+import { gameRouter } from "./gameRouter";
 
 // Combine your individual routers into the main application router
 export const appRouter = router({
-  main: aRouter,
+  main: gameRouter,
   // Add other routers here as your app grows
 });
 
