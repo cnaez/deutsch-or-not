@@ -32,6 +32,10 @@ button:active {
   transform: scale(0.98); /* Slightly scale down */
 }
 
+button:disabled {
+  opacity: 40%;
+}
+
 .ripple {
   position: absolute;
   border-radius: 50%;

@@ -19,6 +19,7 @@ const Game = () => {
   const [timeLeft, setTimeLeft] = useState(10);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [gameWon, setGameWon] = useState(false);
+  const [correctAnswer, setCorrectAnswer] = useState<string | null>(null);
 
   const {
     data: choices,
@@ -46,6 +47,12 @@ const Game = () => {
         setPoints(points + 10);
       }
 
+      // Determine the correct answer from choices
+      const correct = choices?.find((choice) => choice.isReal);
+      if (correct) {
+        setCorrectAnswer(correct.word);
+      }
+
       // Show feedback and then move to the next question
       setTimeout(() => {
         handleNextQuestion(isReal);
@@ -58,6 +65,7 @@ const Game = () => {
     await refetch(); // Ensure refetch happens, but you might want to handle loading states
     setQuestionCount((prev) => prev + 1);
     setIsCorrect(null);
+    setCorrectAnswer(null);
     setTimeLeft(10);
 
     if (questionCount + 1 === 7) {
@@ -136,13 +144,17 @@ const Game = () => {
                     {choices.map((choice) => (
                       <button
                         key={choice.word}
-                        className={`md:text-xl py-5 px-8 rounded-lg text-white font-semibold transition-transform transform hover:scale-105 ${
+                        className={`md:text-xl py-5 px-8 rounded-lg text-white font-semibold transition-transform transform hover:scale-105 disabled:cursor-not-allowed ${
                           selectedChoice === choice.word
                             ? isCorrect === null
                               ? "bg-blue-700"
                               : isCorrect
                               ? "bg-green-500"
+                              : choice.word === correctAnswer
+                              ? "bg-green-500"
                               : "bg-red-500"
+                            : choice.word === correctAnswer
+                            ? "bg-green-500"
                             : "bg-blue-500"
                         }`}
                         onClick={() => handleGuess(choice.word)}

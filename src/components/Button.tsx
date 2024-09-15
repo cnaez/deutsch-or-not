@@ -12,12 +12,14 @@ type ButtonProps = DetailedHTMLProps<
 > & {
   children: ReactNode;
   className?: string;
+  disabled?: boolean;
   onClick: () => void;
 };
 
 const Button: FC<ButtonProps> = ({
   children,
   className,
+  disabled,
   onClick,
   ...props
 }) => {
@@ -56,7 +58,9 @@ const Button: FC<ButtonProps> = ({
   return (
     <button
       {...props}
-      className={`relative overflow-hidden bg-blue-700 text-white py-4 px-6 rounded-lg shadow-md transition-colors hover:bg-blue-800 ${className}`}
+      className={`relative overflow-hidden bg-blue-700 text-white py-4 px-6 rounded-lg shadow-md transition-colors ${
+        disabled ? "cursor-not-allowed" : "hover:bg-blue-800 active:bg-blue-900"
+      } ${className}`}
       onClick={handleClick}
       ref={buttonRef}
     >
