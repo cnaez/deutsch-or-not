@@ -1,0 +1,30 @@
+{
+  "welcome": {
+    "title": "¡Bienvenido! 🌟",
+    "description": "¡Pon a prueba tu vocabulario alemán y diviértete!",
+    "startGame": "Comenzar Juego"
+  },
+  "game": {
+    "question": "Elige la palabra correcta:",
+    "correct": "¡Correcto! 🎉",
+    "wrong": "¡Incorrecto! 😢",
+    "selectOptionFirst": "Por favor, selecciona una opción primero.",
+    "timeLeft": "Tiempo Restante",
+    "submitAnswer": "Enviar Respuesta",
+    "youWon": "¡Ganaste! 🎉",
+    "gameOver": "¡Juego Terminado!",
+    "score": "Puntuación",
+    "level": "Nivel",
+    "badge": "Insignia",
+    "points": "Puntos",
+    "playAgain": "Jugar de nuevo",
+    "levelBeginner": "Principiante",
+    "levelIntermediate": "Intermedio",
+    "levelAdvanced": "Avanzado",
+    "levelExpert": "Experto",
+    "badgeMaster": "🏆 Maestro",
+    "badgePro": "🥈 Profesional",
+    "badgeNovice": "🥉 Novato",
+    "badgeNoob": "🤓 Principiante"
+  }
+}

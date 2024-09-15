@@ -41,7 +41,7 @@ const Game = () => {
       // Show feedback and then move to the next question
       setTimeout(() => {
         handleNextQuestion(isReal);
-      }, 1500); // Short delay before showing the next question
+      }, 1200);
     },
   });
 
