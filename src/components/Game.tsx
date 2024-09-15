@@ -8,11 +8,11 @@ const Game = () => {
   const [result, setResult] = useState("");
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
-  const [questionCount, setQuestionCount] = useState(0); // Count questions
-  const [showResults, setShowResults] = useState(false); // Show after 7 questions
-  const [timeLeft, setTimeLeft] = useState(10); // 10 second timer
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null); // Track correct answer feedback
-  const [gameWon, setGameWon] = useState(false); // Track if the player won
+  const [questionCount, setQuestionCount] = useState(0);
+  const [showResults, setShowResults] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(10);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [gameWon, setGameWon] = useState(false);
 
   const t = trpc.main;
   const { data: choices, refetch } = t.getChoices.useQuery(undefined, {
@@ -24,7 +24,6 @@ const Game = () => {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     } else if (timeLeft === 0 && questionCount < 7) {
-      setResult("Wrong! 😢");
       handleNextQuestion(false); // If time runs out, treat it as a wrong answer
     }
   }, [timeLeft, questionCount]);
@@ -35,33 +34,34 @@ const Game = () => {
       setResult(isReal ? "Correct! 🎉" : "Wrong! 😢");
       if (isReal) {
         setScore(score + 1);
-        setPoints(points + 10); // Earn 10 points for a correct answer
+        setPoints(points + 10);
       }
 
+      // Show feedback and then move to the next question
       setTimeout(() => {
         handleNextQuestion(isReal);
-      }, 1500); // Delay before showing the next question
+      }, 1500); // Short delay before showing the next question
     },
   });
 
-  const handleNextQuestion = (isReal: boolean) => {
+  const handleNextQuestion = async (isReal: boolean) => {
     setSelectedChoice(null);
-    refetch();
-    setQuestionCount(questionCount + 1);
+    await refetch(); // Ensure refetch happens, but you might want to handle loading states
+    setQuestionCount((prev) => prev + 1);
     setIsCorrect(null);
-    setTimeLeft(10); // Reset timer for next round
+    setTimeLeft(10);
 
-    if (questionCount === 6) {
+    if (questionCount + 1 === 7) {
       setShowResults(true);
       checkWinCondition();
     }
   };
 
   const checkWinCondition = () => {
-    const winCondition = score >= 4; // Example winning condition: 4 correct answers out of 7
+    const winCondition = score >= 4;
     setGameWon(winCondition);
     if (winCondition) {
-      setShowConfetti(true); // Show confetti if player wins
+      setShowConfetti(true);
     }
   };
 
@@ -96,8 +96,8 @@ const Game = () => {
     setPoints(0);
     setQuestionCount(0);
     setShowResults(false);
-    setShowConfetti(false); // Hide confetti on reset
-    setGameWon(false); // Reset win state
+    setShowConfetti(false);
+    setGameWon(false);
     setTimeLeft(10);
     setResult("");
     refetch(); // Get new set of words
@@ -105,11 +105,13 @@ const Game = () => {
 
   return (
     <div className="min-h-dvh flex flex-col items-center justify-center bg-gray-100">
-      {showConfetti && <Confetti />} {/* Confetti shows only on win */}
+      {showConfetti && <Confetti />}
       {choices && !showResults ? (
         <div className="relative max-w-3xl w-11/12 bg-white bg-opacity-40 rounded-xl shadow-xl backdrop-blur-lg backdrop-brightness-90 px-10 py-16">
           <h1 className="sm:text-3xl text-2xl text-center font-bold mb-16 text-gray-900">
-            Which of these is a real German word?
+            {isCorrect === null
+              ? "Which of these is a real German word?"
+              : result}
           </h1>
           <div className="grid sm:grid-cols-2 gap-4 mb-6">
             {choices.map((choice) => (
@@ -125,7 +127,7 @@ const Game = () => {
                     : "bg-blue-500"
                 }`}
                 onClick={() => handleGuess(choice.word)}
-                disabled={isCorrect !== null} // Disable after submitting
+                disabled={isCorrect !== null}
               >
                 {choice.word}
               </button>
@@ -135,16 +137,13 @@ const Game = () => {
           <button
             className="w-full bg-blue-700 text-white py-4 px-6 rounded-lg shadow-md hover:bg-blue-800 transition-colors"
             onClick={handleSubmitAnswer}
-            disabled={isCorrect !== null} // Disable after submitting
+            disabled={isCorrect !== null}
           >
             Submit Answer
           </button>
 
           <p className="text-lg font-medium mt-8 text-center text-gray-800">
             Time Left: {timeLeft} seconds
-          </p>
-          <p className="text-lg font-medium mt-6 text-center text-gray-800">
-            {result}
           </p>
         </div>
       ) : (
