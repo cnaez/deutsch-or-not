@@ -38,11 +38,9 @@ To set up the project locally, follow these instructions:
    npm install
     ```
 3. **Set Up Environment Variables**:
-    Create a .env.local file in the root directory and add your environment variables. For example:
 
-     ```bash
-   npm install
-    ```
+    Create a .env.local file in the root directory and add your environment variables.
+
 4. **Run the Development Server**:
    
 
