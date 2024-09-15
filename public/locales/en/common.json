@@ -2,7 +2,8 @@
   "welcome": {
     "title": "Welcome! 🌟",
     "description": "Test your German vocabulary skills and have a blast!",
-    "startGame": "Start Game"
+    "startGame": "Start Game",
+    "letsgo": "Let's go"
   },
   "game": {
     "question": "Choose the correct word:",

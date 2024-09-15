@@ -13,23 +13,23 @@ const WelcomePage = () => {
     setLoading(true);
     setTimeout(() => {
       router.push("/game");
-    }, 500); // Simulate loading time
+    }, 200); // Simulate loading time
   };
 
   return (
     <div>
       <LanguageSwitcher />
-      <div className="relative bg-white bg-opacity-10 p-8 rounded-xl shadow-2xl backdrop-blur-md max-w-md mx-auto text-center mt-6">
-        <h1 className="text-5xl font-extrabold mb-4 animate__animated animate__fadeIn animate__delay-1s">
+      <div className="relative bg-white bg-opacity-10 py-10 px-14 rounded-xl shadow-2xl backdrop-blur-md max-w-lg mx-auto text-center mt-6">
+        <h1 className="text-5xl font-extrabold mb-6 animate__animated animate__fadeIn animate__delay-1s">
           {t("welcome.title")}
         </h1>
-        <p className="text-lg mb-6 animate__animated animate__fadeIn animate__delay-2s">
+        <p className="text-lg mb-8 animate__animated animate__fadeIn animate__delay-2s">
           {t("welcome.description")}
         </p>
         <button
           onClick={handleStart}
-          className={`bg-gradient-to-r from-green-400 to-blue-500 text-white py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105 ${
-            loading ? "opacity-50 cursor-not-allowed" : ""
+          className={`bg-gradient-to-r from-green-400 to-blue-500 text-white py-4 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105 flex justify-center mx-auto w-4/5 ${
+            loading ? "opacity-70 cursor-not-allowed" : ""
           }`}
           disabled={loading}
         >

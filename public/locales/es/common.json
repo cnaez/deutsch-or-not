@@ -2,7 +2,8 @@
   "welcome": {
     "title": "¡Bienvenido! 🌟",
     "description": "¡Pon a prueba tu vocabulario alemán y diviértete!",
-    "startGame": "Comenzar Juego"
+    "startGame": "Comenzar Juego",
+    "letsgo": "Vamos"
   },
   "game": {
     "question": "Elige la palabra correcta:",

@@ -2,7 +2,8 @@
   "welcome": {
     "title": "Hoşgeldiniz! 🌟",
     "description": "Almanca kelime bilginizi test edin ve eğlenin!",
-    "startGame": "Oyuna Başla"
+    "startGame": "Oyuna Başla",
+    "letsgo": "Hadi gidelim"
   },
   "game": {
     "question": "Doğru kelimeyi seçin:",
