@@ -61,7 +61,7 @@ export const gameRouter = router({
       orderBy: {
         score: "desc",
       },
-      take: 10, // Top 10 users
+      take: 15, // Top 15 users
     });
   }),
   updateUserScore: procedure

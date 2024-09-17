@@ -66,7 +66,7 @@ const WelcomePage = () => {
           } ${name ? "opacity-100" : "opacity-0"}`}
           disabled={loading}
         >
-          {loading ? <Spinner /> : t("welcome.letsgo")}
+          {loading ? <Spinner /> : t("welcome.startGame")}
         </button>
 
         <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">

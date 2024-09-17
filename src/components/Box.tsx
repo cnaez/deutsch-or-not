@@ -5,7 +5,7 @@ type BoxProps = {
 };
 const Box: FC<BoxProps> = ({ children }) => {
   return (
-    <div className="relative bg-white bg-opacity-10 py-10 px-8 md:px-12 rounded-xl shadow-2xl backdrop-blur-md w-full md:w-[780px] mx-auto text-center mt-6">
+    <div className="relative bg-white bg-opacity-10 py-10 px-6 md:px-12 rounded-xl shadow-2xl backdrop-blur-md w-full md:w-[780px] mx-auto text-center mt-6">
       {children}
     </div>
   );
