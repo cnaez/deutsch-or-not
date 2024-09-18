@@ -1,17 +1,23 @@
-# Word Guessing Game
+# **Deutsch Or Not**
 
 ## Overview
 
-Welcome to the Word Guessing Game, an engaging and educational game designed to test your knowledge of German vocabulary. In this game, players identify the real German word from a set of options. The game features a multilingual interface, interactive gameplay, and a comprehensive reward system to enhance user experience.
+Welcome to my **Word Guessing Game**, an engaging and educational game designed to test your knowledge of German vocabulary. In this game, players identify the real German word from a set of options. The game features a multilingual interface, interactive gameplay, and a comprehensive reward system to enhance user experience.
+
+## **Live Demo**
+
+You can try the live version of the app here: [Deutsch Or Not Live](https://deutschornot.vercel.app)
 
 ## Features
 
-- **Multilingual Support**: Available in both English and German.
-- **Interactive Gameplay**: Identify the real German word from four options.
-- **Scoring and Rewards**: Earn points for correct answers, unlock badges, and progress through levels.
-- **Timer Challenge**: Each question has a countdown timer for added excitement.
-- **Confetti Animation**: Celebrate victories with a confetti animation.
+- **Dynamic Word Selection**: Choose the real word from a list of options.
+- **Timed Gameplay**: Each round is limited by a countdown timer.
+- **Score Tracking**: Players’ scores are tracked and updated dynamically.
+- **Multilingual Support**: The app supports English, German, Spanish, Arabic, Turkish, and Persian languages.
+- **Responsive UI**: Designed with a clean, modern UI for a seamless experience across devices.
+- **Leaderboard**: Track your progress and compare it with others.
 - **Gamification Elements**: Track progress with levels, badges, and points.
+
 
 ## Technologies Used
 
@@ -22,48 +28,72 @@ Welcome to the Word Guessing Game, an engaging and educational game designed to 
 - **Prisma**: ORM for interacting with PostgreSQL.
 - **React Confetti**: Library for confetti animations.
 
-## Installation
+## **Getting Started**
 
-To set up the project locally, follow these instructions:
+To get a local copy up and running, follow these steps.
 
-1. **Clone the Repository**:
-    Ensure you have Node.js installed, then run:
+### **Prerequisites**
+
+Make sure you have these installed on your machine:
+- Node.js (v14 or later)
+- npm or yarn
+- PostgreSQL (for local development)
+
+### **Installation**
+
+1. **Clone the repo**:
    ```bash
-   git clone https://github.com/yourusername/word-guessing-game.git
-   cd word-guessing-game
-    ```
-2. **Install Dependencies**:
-
-     ```bash
-   npm install
-    ```
-3. **Set Up Environment Variables**:
-
-    Create a .env.local file in the root directory and add your environment variables.
-
-4. **Run the Development Server**:
+   git clone https://github.com/your-username/your-repo.git
+   ```
    
+2. **Navigate to the project directory**:
+   ```bash
+   cd your-repo
+   ```
 
-     ```bash
+3. **Install the dependencies**:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+4. **Set up your environment variables**:
+   Create a `.env` file in the root of the project and add your database and other necessary environment variables.
+   Example:
+   ```env
+   DATABASE_URL=postgres://your-username:your-password@localhost:5432/your-database
+   ```
+
+5. **Run database migrations**:
+   ```bash
+   npx prisma migrate dev
+   ```
+
+6. **Start the development server**:
+   ```bash
    npm run dev
-    ```
-    Navigate to http://localhost:3000 in your web browser to start playing.
+   ```
 
-##  Gameplay
+Your app should now be running on [http://localhost:3000](http://localhost:3000)!
 
-- **Objective**: Choose the real German word from four options.
-- **Timer**: A 10-second countdown is provided for each question.
-- **Scoring**: Correct answers increase your score and award points. Badges and levels are determined by your score.
+## **Contributing**
 
-## Contribution
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-We welcome contributions to the project! To contribute:
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-1. Fork the repository
-2. Create a feature branch (git checkout -b feature-branch)
-3. Make your changes.
-4. Commit your changes (git commit -am 'Add new feature').
-5. Push to the branch (git push origin feature-branch).
-6. Open a Pull Request.
+## **License**
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## **Contact**
+
+- **Email**: cenaesmailzadeh@gmail.com
+- **GitHub**: [cnaez](https://github.com/cnaez)
 
 Thank you for checking out the Word Guessing Game. We hope you enjoy playing and learning with it!
