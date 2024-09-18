@@ -43,12 +43,12 @@ Make sure you have these installed on your machine:
 
 1. **Clone the repo**:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/cnaez/deutsch-or-not.git
    ```
    
 2. **Navigate to the project directory**:
    ```bash
-   cd your-repo
+   cd deutsch-or-not
    ```
 
 3. **Install the dependencies**:
